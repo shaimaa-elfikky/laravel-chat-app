@@ -4,28 +4,24 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
 
-class Chat implements ShouldBroadcast
+class UserStatusUpdate
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $username;
-    public $message;
 
     /**
      * Create a new event instance.
      *
-     * @param string $username
-     * @param string $message
+     * @return void
      */
-    public function __construct($username, $message)
+    public function __construct()
     {
-        $this->username = $username;
-        $this->message = $message;
+        //
     }
 
     /**
@@ -35,21 +31,6 @@ class Chat implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chat');
+        return new PrivateChannel('channel-name');
     }
-
-    
-    public function broadcastWith()
-    {
-        return [
-            'username' => $this->username,
-            'message' => $this->message,
-              
-        ];
- 
-    }
-
-
-   
-
 }

@@ -30,19 +30,20 @@ return [
 
     'connections' => [
 
-       'pusher' => [
-            'driver' => 'pusher',
-            'key' => env('PUSHER_APP_KEY', 'local'),
-            'secret' => env('PUSHER_APP_SECRET', 'local'),
-            'app_id' => env('PUSHER_APP_ID', 'local'),
-            'options' => [
-                'cluster' => env('PUSHER_APP_CLUSTER', 'mt1'),
-                'encrypted' => false, // Set to false for local development
-                'host' => '127.0.0.1',
-                'port' => 6001,
-                'scheme' => 'http',
-                'useTLS' => false, // Set to false for local development
-            ],
+     'pusher' => [
+        'driver' => 'pusher',
+        'key' => env('PUSHER_APP_KEY'),
+        'secret' => env('PUSHER_APP_SECRET'),
+        'app_id' => env('PUSHER_APP_ID'),
+        'options' => [
+            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'useTLS' => false,
+            'encrypted' => false,
+            'host' => env('PUSHER_HOST', '127.0.0.1'),
+            'port' => env('PUSHER_PORT', 6001),
+            'scheme' => env('PUSHER_SCHEME', 'http'),
+        ],
+
         ],
 
         'redis' => [
