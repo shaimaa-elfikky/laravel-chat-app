@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-     
+
 
         <div class="container mt-4">
 
         <div class="row">
 
             @if(count($users) > 0 )
-               
+
                 <div class="col-md-3">
 
                     <ul class="list-group">
                         @foreach($users as $user)
-                        <li class="list-group-item list-group-item-dark cursor-pointer user-list">
+                        <li class="list-group-item list-group-item-dark cursor-pointer user-list" data-id={{ $user->id }}>
                           {{$user->name}}
                           <b> <sup id="{{$user->id}}-status" class="offline-status">offline</sup> </b>
                         </li>
                         @endforeach
-                        
+
                     </ul>
 
                 </div>
@@ -29,6 +29,12 @@
                     <div class="chat-section">
 
                         <div id="chat-container">
+                           <div class="current-user-chat">
+                              <h5></h5>
+                           </div>
+                            <div class="distance-user-chat">
+                              <h5></h5>
+                           </div>
 
 
                         </div>
@@ -38,7 +44,7 @@
                         </form>
 
                     </div>
-                    
+
                 </div>
             @else
 

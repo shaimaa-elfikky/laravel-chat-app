@@ -35,28 +35,3 @@ h3{
 .online-status{
     color:green;
 }
-
-.current-user-chat{
-    text-align:right ;
-    margin: 10px;
-    color: black;
-}
-
-.current-user-chat h5{
-    font-size: 30px;
-}
-
-.distance-user-chat{
-    text-align:left ;
-    margin: 10px;
-    color: black;
-}
-
-.distance-user-chat h5{
-    font-size: 30px;
-}
-
-#message{
-    margin-top:10px;
-    border:3px black solid !important;
-}

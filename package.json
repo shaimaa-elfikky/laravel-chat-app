@@ -29,6 +29,6 @@
     },
     "dependencies": {
         "laravel-echo": "^1.11.2",
-        "pusher-js": "^8.4.0"
+        "pusher-js": "^4.4.0"
     }
 }

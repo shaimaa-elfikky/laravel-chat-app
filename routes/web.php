@@ -22,3 +22,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'UserController@loadDashboard')->middleware(['auth'])->name('home');
+
+Route::post('/save-message', 'UserController@saveMessage');

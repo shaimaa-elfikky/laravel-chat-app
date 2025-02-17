@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Scripts -->
-   
+
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- Fonts -->
@@ -24,9 +24,12 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <script src="{{ asset('js/custom.js') }}"></script>
 
- 
-    
-    
+
+    <script>
+        var sender_id  = @json(auth()->check() ? auth()->user()->id : null);
+        var receiver_id ;
+    </script>
+
 </head>
 <body>
     <div id="app">
