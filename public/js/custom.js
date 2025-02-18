@@ -15,8 +15,9 @@
             $('.start-head').hide();
             $('.chat-section').show();
 
-    });
+            loadMessages();
 
+    });
 
 
 
@@ -80,6 +81,54 @@
             }
 
         });
+
+
+
+ //load messages
+
+    function loadMessages(){
+
+        $.ajax({
+            url:"/load-messages",
+            type:"POST",
+            data : {sender_id :sender_id,
+                receiver_id:receiver_id,
+                },
+                headers: {
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                },
+
+                success:function(res){
+                    if(res.success){
+
+                        let messages = res.data ;
+
+                        let html = '';
+                        let addClass = ''
+                        for(let i = 0 ; i < messages.length ; i ++)
+                        {
+
+                            if(messages[i].sender_id == sender_id ){
+                                addClass = "current-user-chat" ;
+                            }else{
+                                addClass = "distance-user-chat"
+                            }
+                            html+= `<div class="${addClass}">
+                                    <h5>${messages[i].message}</h5>
+                                </div>` ;
+                        }
+                        $('#chat-container').append(html);
+
+                    }else{
+                     alert(res.msg);
+                    }
+                }
+            });
+
+
+    }
+
 
 });
 

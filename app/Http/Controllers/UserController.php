@@ -17,6 +17,31 @@ class UserController extends Controller
         return view('home', compact('users'));
     }
 
+
+
+    public function loadMessages(Request $request){
+
+        try{
+
+            $messages = Message::where(function ($query) use ($request) {
+                $query->where('sender_id', $request->sender_id)
+                      ->where('receiver_id', $request->receiver_id);
+            })->orWhere(function ($query) use ($request) {
+                $query->where('sender_id', $request->receiver_id)
+                      ->where('receiver_id', $request->sender_id);
+            })->get();
+
+            return response()->json(['success'=>true , 'data'=> $messages  ]);
+
+        }catch(\Exception $e){
+
+            return response()->json(['success'=>false , 'msg'=>$e->getMessage()]);
+
+        }
+
+    }
+
+
     public function saveMessage(Request $request){
 
         try{

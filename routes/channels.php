@@ -18,14 +18,14 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('test', function ($message) {
-    return $message ;
+    return $message;
 });
 
 Broadcast::channel('status-update', function ($user) {
-    return $user ;
+    return $user;
 });
 
 Broadcast::channel('broadcast-message', function ($user) {
-    return $user ;
+    return $user;
 });
 
