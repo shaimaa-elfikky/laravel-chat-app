@@ -15,9 +15,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
+
 
 Auth::routes();
 
@@ -26,3 +31,5 @@ Route::get('/home', 'UserController@loadDashboard')->middleware(['auth'])->name(
 Route::post('/save-message', 'UserController@saveMessage');
 
 Route::post('/load-messages', 'UserController@loadMessages');
+
+Route::post('/message-deleted', 'UserController@deleteMessages');

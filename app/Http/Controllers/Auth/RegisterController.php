@@ -53,21 +53,28 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
+
+
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
-     */
     protected function create(array $data)
     {
+
+        $imageName = null;
+
+        if (isset($data['image']) && $data['image']->isValid()) {
+            $imageName = time() . '.' . $data['image']->extension();
+            $data['image']->move(public_path('images'), $imageName);
+            $imageName = 'images/' . $imageName;
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'image'   => $imageName
         ]);
     }
 }

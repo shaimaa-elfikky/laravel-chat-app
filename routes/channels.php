@@ -29,3 +29,6 @@ Broadcast::channel('broadcast-message', function ($user) {
     return $user;
 });
 
+Broadcast::channel('deleted-message', function ($user) {
+    return $user;
+});

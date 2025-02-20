@@ -12,12 +12,24 @@
                 <div class="col-md-3">
 
                     <ul class="list-group">
-                        @foreach($users as $user)
+                    @foreach($users as $user)
+
+                        @php
+                            if($user->image != '' && $user->image != null){
+                                $image = $user->image  ;
+                            }
+                            else{
+                                $image ='images/dummy.png' ;
+
+                            }
+
+                        @endphp
                         <li class="list-group-item list-group-item-dark cursor-pointer user-list" data-id={{ $user->id }}>
+                            <img src="{{ $image }}" alt="" class="user-image">
                           {{$user->name}}
                           <b> <sup id="{{$user->id}}-status" class="offline-status">offline</sup> </b>
                         </li>
-                        @endforeach
+                    @endforeach
 
                     </ul>
 
@@ -59,4 +71,30 @@
 
 
         </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Chat </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" id="delete-chat-form">
+            <div class="modal-body">
+               <input type="hidden" name="id" id="delete-message-id" />
+               <p> Are You Sure You Want TO Delete !</p>
+               <p> <b id="delete-message"> </b></p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger">Delete </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection

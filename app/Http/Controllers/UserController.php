@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\User;
 use App\Message;
 use Illuminate\Http\Request;
 use App\Events\MessageEvent;
+use App\Events\MessageDeletedEvent;
 
 class UserController extends Controller
 {
@@ -65,4 +67,29 @@ class UserController extends Controller
         }
 
     }
+
+
+    public function deleteMessages(Request $request){
+
+        try{
+
+            $message = Message::find($request->id);
+
+            if ($message) {
+                $message->delete();
+                event(new MessageDeletedEvent($request->id));
+
+                return response()->json(['success' => true, 'msg' => 'Message Deleted Successfully!']);
+            } else {
+                return response()->json(['success' => false, 'msg' => 'Message not found!']);
+            }
+
+        }catch(\Exception $e){
+
+            return response()->json(['success'=>false , 'msg'=>$e->getMessage()]);
+
+        }
+
+    }
+
 }
