@@ -25,9 +25,9 @@ try {
     require('bootstrap');
 } catch (e) {}
 
-window.Echo.connector.pusher.connection.bind('connected', () => {
-    console.log('Connected to Pusher');
-});
+
+
+
 
 window.Echo.join('status-update')
     .here((users) => {

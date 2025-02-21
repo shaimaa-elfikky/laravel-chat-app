@@ -8,6 +8,7 @@ use App\Message;
 use Illuminate\Http\Request;
 use App\Events\MessageEvent;
 use App\Events\MessageDeletedEvent;
+use App\Events\MessageUpdatedEvent;
 
 class UserController extends Controller
 {
@@ -92,4 +93,33 @@ class UserController extends Controller
 
     }
 
+    
+    public function updateMessage(Request $request){
+
+        try{
+
+            $message = Message::find($request->id);
+
+           
+
+            if (!$message) {
+                return response()->json(['success' => false, 'msg' => 'Message not found!']);
+            }
+     
+                $message->update(['message'=>$request->message]);
+
+                $updatedMessage = Message::where('id', $request->id )->first();
+
+                event(new MessageUpdatedEvent($updatedMessage));
+
+                return response()->json(['success' => true, 'msg' => 'Message Updated Successfully!']);
+          
+
+        }catch(\Exception $e){
+
+            return response()->json(['success'=>false , 'msg'=>$e->getMessage()]);
+
+        }
+
+}
 }

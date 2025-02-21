@@ -97,4 +97,27 @@
       </div>
     </div>
   </div>
+
+
+    <!-- UPDATE Modal -->
+    <div class="modal fade" id="updateChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Chat </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" id="update-chat-form">
+            <div class="modal-body">
+               <input type="hidden" name="id" id="update-message-id" />
+               <input type="text" class="form-control" name="message" id ="update-message" required/>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Edit </button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection

@@ -33,3 +33,5 @@ Route::post('/save-message', 'UserController@saveMessage');
 Route::post('/load-messages', 'UserController@loadMessages');
 
 Route::post('/message-deleted', 'UserController@deleteMessages');
+
+Route::post('/update-message', 'UserController@updateMessage');
