@@ -15,12 +15,12 @@ class MessageUpdatedEvent  implements   ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
    
-    public $data;
+    public $message;
     
 
-    public function __construct($data)
+    public function __construct($message)
     {
-        $this->data = $data ;
+        $this->message = $message ;
     }
 
  
@@ -28,4 +28,22 @@ class MessageUpdatedEvent  implements   ShouldBroadcast
     {
         return new PrivateChannel('message-updated');
     }
+
+    
+    public function broadcastAs()
+    {
+        return 'MessageUpdatedEvent';
+    }
+
+
+    public function broadcastWith()
+{
+    return [
+        'data' => [
+            'id' => $this->message->id,
+            'message' => $this->message->message,
+        ],
+    ];
+}
+    
 }

@@ -98,15 +98,15 @@ class UserController extends Controller
 
         try{
 
-            $message = Message::find($request->id);
+            $messageId = Message::find($request->id);
 
            
 
-            if (!$message) {
+            if (!$messageId) {
                 return response()->json(['success' => false, 'msg' => 'Message not found!']);
             }
      
-                $message->update(['message'=>$request->message]);
+                $messageId->update(['message'=>$request->message]);
 
                 $updatedMessage = Message::where('id', $request->id )->first();
 

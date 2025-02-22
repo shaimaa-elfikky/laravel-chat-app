@@ -52,6 +52,14 @@ $(document).ready(function() {
             }
         });
 
+         // Listen for updated messages in real-time
+        window.Echo.private('message-updated')
+        .listen('.MessageUpdatedEvent', (data) => {
+            
+            $(`#${data.data.id}-message`).find('span').text(data.data.message);
+        });
+    
+
     // Delete message
     $(document).on('click', '.fa-trash', function() {
         const id = $(this).attr('data-id');
@@ -86,6 +94,7 @@ $(document).ready(function() {
         .listen('MessageDeletedEvent', (data) => {
             $(`#${data.id}-chatMessage, #${data.id}-message`).remove();
         });
+ 
 
     // Update message
     $(document).on('click', '.fa-edit', function() {
@@ -117,6 +126,8 @@ $(document).ready(function() {
             }
         });
     });
+
+  
 
     // Load messages
     function loadMessages() {
@@ -162,3 +173,6 @@ $(document).ready(function() {
         }, 0);
     }
 });
+
+
+

@@ -76,7 +76,7 @@
 
 
   <!-- Modal -->
-  <div class="modal fade" id="deleteChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteChatModal" tabindex="-1" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -100,7 +100,7 @@
 
 
     <!-- UPDATE Modal -->
-    <div class="modal fade" id="updateChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="updateChatModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
