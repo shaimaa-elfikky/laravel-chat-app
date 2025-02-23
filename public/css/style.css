@@ -75,3 +75,64 @@ h3{
 .fa-edit{
     color:blue;
 }
+
+
+    /* Custom Navbar Styles */
+    .navbar {
+        padding: 1rem 0;
+        border-bottom: 2px solid #f8f9fa;
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #2c3e50 !important; 
+        transition: color 0.3s ease;
+    }
+    
+    .navbar-brand:hover {
+        color: #3498db !important;
+    }
+    
+    .navbar-brand:not(:first-child) {
+        margin-left: 1.5rem;
+    }
+    
+
+    .navbar.shadow-sm {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+
+    .navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .navbar-brand::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #3498db;
+        transition: width 0.3s;
+    }
+    
+    .navbar-brand:hover::after {
+        width: 100%;
+    }
+
+    /*     end     */
+
+    /* Member Class*/
+
+    .addMembersInTable{
+        overflow-y: scroll;
+        width: 100px;
+        height: 100px;
+    }
+
+    #add-member-error{
+        color: red;
+    }

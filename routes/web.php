@@ -35,3 +35,16 @@ Route::post('/load-messages', 'UserController@loadMessages');
 Route::post('/message-deleted', 'UserController@deleteMessages');
 
 Route::post('/update-message', 'UserController@updateMessage');
+
+///Groups Routes
+Route::get('/groups', 'GroupController@loadGroup')->middleware(['auth'])->name('groups');
+
+Route::post('/create-group', 'GroupController@createGroup');
+
+
+//Members Routs
+
+Route::post('/get-members', 'MembersController@getMembers')->middleware(['auth'])->name('groups');
+
+
+

@@ -175,4 +175,77 @@ $(document).ready(function() {
 });
 
 
+// CHAT GROUP SCRIPT
 
+$(document).ready(function(){
+
+    $('#creatGroupForm').submit(function(e){
+
+        e.preventDefault();
+
+        $.ajax({
+            url:"/create-group",
+            type:"POST",
+            data:new FormData(this),
+            contentType:false,
+            cache:false,
+            processData:false,
+            success:function(res){
+                alert(res.msg);
+                if(res.success){
+                    location.reload();
+                }
+            },
+            error: function (xhr, status, error) {
+                alert("An error occurred: " + xhr.responseText);
+            }
+
+        });
+
+    });
+
+});
+
+
+//Member Script 
+$(document).ready(function(){
+    $(".addMember").on('click', function(){
+        var id = $(this).attr('data-id');
+        var limit =  $(this).attr('data-limit');
+     
+        $("#add-group-id").val(id);
+        $("#add-limit").val(limit);
+     
+        $.ajax({
+     
+           url:"/get-members",
+           type:"POST",
+           data:{group_id:id},
+     
+           success:function(res){
+             if(res.success){
+               
+                var users = res.data ;
+                var html = ''
+
+                for(let i = 0 ; i < users.length ; i ++)
+                {
+                    html+=`<tr>
+                        <td> 
+                            <input type="checkbox" name="members[]" value="${users[i]['id']}" />
+                        </td>
+                        <td>
+                            ${users[i]['name']}
+                        </td>
+                    </tr>`;
+                }
+                $(".addMembersInTable").html(html);
+           
+             }else{
+                 alert(res.msg);
+             }
+           }
+        });
+     });
+
+});

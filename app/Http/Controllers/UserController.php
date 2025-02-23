@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Events\MessageEvent;
 use App\Events\MessageDeletedEvent;
 use App\Events\MessageUpdatedEvent;
+use App\Group;
 
 class UserController extends Controller
 {
@@ -122,4 +123,7 @@ class UserController extends Controller
         }
 
 }
+
+
+
 }
